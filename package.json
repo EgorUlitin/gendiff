@@ -23,5 +23,8 @@
   },
   "bin": {
     "gendiff": "bin/index.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0"
   }
 }
