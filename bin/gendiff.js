@@ -1,18 +1,23 @@
-// #!/usr/bin/env node
+import _ from 'lodash'
 
-// import program from 'commander';
-// import * as fs from 'fs';
-// import * as path from 'path';
-// import { getFilePath, getObj } from './helpers.js'
+export default (file1, file2) => {
+  const objToArr1 = Object.keys(file1)
+  const objToArr2 = Object.keys(file2)
+  const commonArr = [...objToArr1, ...objToArr2]
+  //const indentificators = ['    ','   +','   -']
+  const result = []
+  _.uniq(commonArr.sort())
+            .map(key => {
+              if (objToArr1.includes(key) && objToArr2.includes(key)) {
+                if(file1[key] === file2[key]) {
+                  result.push(`    ${key}: ${file1[key]}`)
+                } else {
+                  result.push(`  - ${key}: ${file1[key]}`, `  + ${key}: ${file2[key]}`)
+                }
+              } else {
+                objToArr1.includes(key) ? result.push(`  - ${key}: ${file1[key]}`) : result.push(`  + ${key}: ${file2[key]}`)
+              }
 
-// program
-//   .version('0.0.1')
-//   .description('Compares two configuration files and shows a difference.')
-//   .option('-f, --format [type]', 'output format')
-//   .arguments('<filepath1> <filepath2>')
-//   .action((filepath1, filepath2) => {
-//     const firstFile = getObj(getFilePath(filepath1))
-//     const secondFile = getObj(getFilePath(filepath2))
-    
-//   })
-//   .parse()
+            })
+  return ['{', ...result, '}'].join('\n')
+}
