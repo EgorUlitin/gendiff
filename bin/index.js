@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import program from 'commander';
-import { getFilePath, getObj } from './helpers';
-import gendiff from './gendiff';
+import { getFilePath, getObj } from './helpers.js';
+import gendiff from './gendiff.js';
 
 program
   .version('0.0.1')
