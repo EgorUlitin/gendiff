@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
 import program from 'commander';
-import * as fs from 'fs';
-import * as path from 'path';
-import { getFilePath, getObj } from './helpers.js'
-import gendiff from './gendiff.js'
+import { getFilePath, getObj } from './helpers';
+import gendiff from './gendiff';
 
 program
   .version('0.0.1')
@@ -12,8 +10,8 @@ program
   .option('-f, --format [type]', 'output format')
   .arguments('<filepath1> <filepath2>')
   .action((filepath1, filepath2) => {
-    const firstFile = getObj(getFilePath(filepath1))
-    const secondFile = getObj(getFilePath(filepath2))
-    console.log(gendiff(firstFile, secondFile))
+    const firstFile = getObj(getFilePath(filepath1));
+    const secondFile = getObj(getFilePath(filepath2));
+    console.log(gendiff(firstFile, secondFile));
   })
-  .parse()
+  .parse();
