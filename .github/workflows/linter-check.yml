@@ -10,10 +10,10 @@ jobs:
           make install
         env:
           CI: true
-      # - name: Run linter
-      #   # Run Linter
-      #   run:
-      #     make lint
+      - name: Run linter
+        # Run Linter
+        run:
+          make lint
       - name: Run Test
         # Run Test
         run:
