@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/EgorUlitin/frontend-project-lvl2#readme",
   "dependencies": {
+    "@jest/globals": "^27.3.1",
     "commander": "^8.3.0",
     "lodash": "^4.17.21"
   },
