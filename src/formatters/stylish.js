@@ -1,4 +1,4 @@
-import types from './helpers/types.js';
+import types from '../helpers/types.js';
 
 const TAB = '    ';
 const TAB_LEVEL = 1;
@@ -16,6 +16,6 @@ function diff(data, level) {
   return `{\n${data.map((node) => dictionary[node.type](node, level)).join('\n')}\n${TAB.repeat(level - 1)}}`;
 }
 
-const formater = (data) => diff(data, TAB_LEVEL);
+const stylish = (data) => diff(data, TAB_LEVEL);
 
-export default formater;
+export default stylish;
