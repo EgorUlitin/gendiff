@@ -8,6 +8,6 @@ const json2 = fs.readFileSync('./__fixtures__/file1.json', 'utf-8');
 describe('check gendiff function', () => {
   test('check type of return', () => {
     const res = gendiff(json1, json2);
-    expect(typeof res).toEqual('string');
+    expect(typeof res).toEqual('object');
   });
 });
