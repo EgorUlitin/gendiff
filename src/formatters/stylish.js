@@ -8,7 +8,7 @@ function showValue(value, level) {
   console.log(value, level);
   //return `${_.isObject(value) ? `{\n${TAB.repeat(level + 1)}  ${children.map(([k, v]) => `${k}: ${v}`)}\n${TAB.repeat(level)}  }` : value}`;
   const arr = _.isObject(value) && Object.entries(value);
-  return `${_.isObject(value) ? `{${arr.map(([k, v]) => `\n${TAB.repeat(level + 4)}${k}: ${showValue(v, level + 1)}`)}\n${TAB.repeat(level)}  }` : `${value}`}`;
+  return `${_.isObject(value) ? `{${arr.map(([k, v]) => `\n${TAB.repeat(level + 4)}${k}: ${showValue(v, level + 1)}`)}\n${TAB.repeat(level + 1)}  }` : `${value}`}`;
 }
 
 const dictionary = {
