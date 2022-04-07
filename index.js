@@ -1,6 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import _ from 'lodash';
+import parser from './parsers.js';
 
 const getFile = (entriesValue) => {
   const filePath = path.isAbsolute(entriesValue)
@@ -9,7 +10,7 @@ const getFile = (entriesValue) => {
 
   const file = fs.readFileSync(filePath, 'utf-8');
 
-  return JSON.parse(file);
+  return parser(filePath, file);
 };
 
 const genDiff = (entriesValue1, entriesValue2) => {
