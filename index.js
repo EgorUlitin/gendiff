@@ -3,8 +3,6 @@ import * as fs from 'fs';
 import _ from 'lodash';
 
 const getFile = (entriesValue) => {
-  // const ext = path.extname(entriesValue);
-
   const filePath = path.isAbsolute(entriesValue)
     ? entriesValue
     : path.resolve(process.cwd(), entriesValue);
