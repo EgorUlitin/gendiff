@@ -3,7 +3,6 @@ import types from './helpers/types.js';
 
 const getChildren = (data) => {
   const entries = Object.entries(data);
-  // console.log(data)
   return entries.map(([key ,value]) => {
     if (_.isObject(value)) {
       return getChildren(value);
@@ -50,7 +49,6 @@ const genDiff = (entriesValue1, entriesValue2) => {
           key,
           old: currentValue1,
           newValue: currnetValue2,
-          // children: getChildren(currnetValue2),
           type: types.CHANGE,
         };
       }
@@ -58,7 +56,6 @@ const genDiff = (entriesValue1, entriesValue2) => {
         return {
           key,
           old: currentValue1,
-          // children: getChildren(currentValue1),
           type: types.UNCHANGE,
         };
       }

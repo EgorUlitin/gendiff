@@ -20,9 +20,7 @@ const stylish = (diff) => {
       return `{\n${node.map((value) => dic[value.type](value, counter, iter)).join('\n')}\n${TAB.repeat(spacesCount * counter - 4)}}`;
     }
     const entries = Object.entries(node);
-    return `\n${entries.map(([key, value]) => `${TAB.repeat(spacesCount * counter - 2)}  ${key}: ${_.isObject(value) ? iter(value, counter + 1) : value}`).join('\n')}\n${TAB.repeat(spacesCount * counter - 4)}}`;
-    // const values = Object.values(node);
-    // return `{\n${values.map((value) => dic[value.type](value, counter, iter)).join('\n')}\n${TAB.repeat(spacesCount * counter - 4)}}`;
+    return `{\n${entries.map(([key, value]) => `${TAB.repeat(spacesCount * counter - 2)}  ${key}: ${_.isObject(value) ? iter(value, counter + 1) : value}`).join('\n')}\n${TAB.repeat(spacesCount * counter - 4)}}`;
   };
   return iter(diff, 1);
 };
