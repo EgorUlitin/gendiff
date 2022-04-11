@@ -2,18 +2,14 @@ import _ from 'lodash';
 import types from './helpers/types.js';
 
 const getChildren = (data) => {
-  const children = [];
-
-  if (_.isObject(data)) {
-    const values = Object.values(data);
-    return values.map((child) => {
-      if (_.isObject(child)) {
-        return getChildren(child);
-      }
-      return children.push(child);
-    });
-  }
-  return children;
+  const entries = Object.entries(data);
+  // console.log(data)
+  return entries.map(([key ,value]) => {
+    if (_.isObject(value)) {
+      return getChildren(value);
+    }
+    return { [key]: value };
+  });
 };
 
 const genDiff = (entriesValue1, entriesValue2) => {
@@ -36,7 +32,7 @@ const genDiff = (entriesValue1, entriesValue2) => {
           key,
           old: currentValue1,
           newValue: currnetValue2,
-          // children: getChildren(currentValue1),
+          children: _.isObject(currentValue1) && getChildren(currentValue1),
           type: types.REMOVE,
         };
       }
@@ -45,7 +41,7 @@ const genDiff = (entriesValue1, entriesValue2) => {
           key,
           old: currentValue1,
           newValue: currnetValue2,
-          // children: getChildren(currnetValue2),
+          children: _.isObject(currnetValue2) && getChildren(currnetValue2),
           type: types.ADD,
         };
       }
