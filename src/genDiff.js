@@ -1,12 +1,5 @@
 import _ from 'lodash';
-
-const types = {
-  NODE: 'node',
-  REMOVE: 'remove',
-  ADD: 'add',
-  CHANGE: 'change',
-  UNCHANGE: 'unchange',
-};
+import types from './helpers/types.js';
 
 const getChildren = (data) => {
   const children = [];
@@ -15,10 +8,9 @@ const getChildren = (data) => {
     const values = Object.values(data);
     return values.map((child) => {
       if (_.isObject(child)) {
-        getChildren(child);
-      } else {
-        children.push(child);
+        return getChildren(child);
       }
+      return children.push(child);
     });
   }
   return children;
@@ -43,8 +35,8 @@ const genDiff = (entriesValue1, entriesValue2) => {
         return {
           key,
           old: currentValue1,
-          new: currnetValue2,
-          children: getChildren(currentValue1),
+          newValue: currnetValue2,
+          // children: getChildren(currentValue1),
           type: types.REMOVE,
         };
       }
@@ -52,8 +44,8 @@ const genDiff = (entriesValue1, entriesValue2) => {
         return {
           key,
           old: currentValue1,
-          new: currnetValue2,
-          children: getChildren(currnetValue2),
+          newValue: currnetValue2,
+          // children: getChildren(currnetValue2),
           type: types.ADD,
         };
       }
@@ -61,8 +53,8 @@ const genDiff = (entriesValue1, entriesValue2) => {
         return {
           key,
           old: currentValue1,
-          new: currnetValue2,
-          children: getChildren(currnetValue2),
+          newValue: currnetValue2,
+          // children: getChildren(currnetValue2),
           type: types.CHANGE,
         };
       }
@@ -70,12 +62,11 @@ const genDiff = (entriesValue1, entriesValue2) => {
         return {
           key,
           old: currentValue1,
-          children: getChildren(currentValue1),
+          // children: getChildren(currentValue1),
           type: types.UNCHANGE,
         };
       }
     });
-    // console.log(JSON.stringify(result[0], null, '  '));
     return result;
   };
   return diff(entriesValue1, entriesValue2);
