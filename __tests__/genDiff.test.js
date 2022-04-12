@@ -1,4 +1,6 @@
-import { expect, test, describe, beforeAll } from '@jest/globals';
+import {
+  expect, test, describe, beforeAll,
+} from '@jest/globals';
 import * as fs from 'fs';
 import { fileURLToPath } from 'url';
 import { join, dirname } from 'path';
@@ -19,16 +21,19 @@ beforeAll(() => {
 const plainJson = genDiff(
   './__fixtures__/plain/file1.json',
   './__fixtures__/plain/file2.json',
+  'stylish',
 );
 
 const plainYaml = genDiff(
   './__fixtures__/plain/file1.yml',
   './__fixtures__/plain/file2.yml',
+  'stylish',
 );
 
 const treeJson = genDiff(
   './__fixtures__/trees/file1.json',
   './__fixtures__/trees/file2.json',
+  'stylish',
 );
 
 describe('check plain structure', () => {
@@ -41,10 +46,7 @@ describe('check plain structure', () => {
 });
 
 describe('check tree structure', () => {
-  test('plain structure json', () => {
+  test('tree structure json', () => {
     expect(treeJson).toBe(treeRes);
   });
-  // test('plain structure yaml', () => {
-  //   expect(plainYaml).toBe(res);
-  // });
 });
