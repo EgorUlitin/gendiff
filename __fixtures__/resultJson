@@ -1,0 +1,147 @@
+[
+  {
+    "key": "common",
+    "children": [
+      {
+        "key": "follow",
+        "newValue": false,
+        "children": false,
+        "type": "add"
+      },
+      {
+        "key": "setting1",
+        "old": "Value 1",
+        "type": "unchange"
+      },
+      {
+        "key": "setting2",
+        "old": 200,
+        "children": false,
+        "type": "remove"
+      },
+      {
+        "key": "setting3",
+        "old": true,
+        "newValue": null,
+        "type": "change"
+      },
+      {
+        "key": "setting4",
+        "newValue": "blah blah",
+        "children": false,
+        "type": "add"
+      },
+      {
+        "key": "setting5",
+        "newValue": {
+          "key5": "value5"
+        },
+        "children": [
+          {
+            "key5": "value5"
+          }
+        ],
+        "type": "add"
+      },
+      {
+        "key": "setting6",
+        "children": [
+          {
+            "key": "doge",
+            "children": [
+              {
+                "key": "wow",
+                "old": "",
+                "newValue": "so much",
+                "type": "change"
+              }
+            ],
+            "type": "node"
+          },
+          {
+            "key": "key",
+            "old": "value",
+            "type": "unchange"
+          },
+          {
+            "key": "ops",
+            "newValue": "vops",
+            "children": false,
+            "type": "add"
+          }
+        ],
+        "type": "node"
+      }
+    ],
+    "type": "node"
+  },
+  {
+    "key": "group1",
+    "children": [
+      {
+        "key": "baz",
+        "old": "bas",
+        "newValue": "bars",
+        "type": "change"
+      },
+      {
+        "key": "foo",
+        "old": "bar",
+        "type": "unchange"
+      },
+      {
+        "key": "nest",
+        "old": {
+          "key": "value"
+        },
+        "newValue": "str",
+        "type": "change"
+      }
+    ],
+    "type": "node"
+  },
+  {
+    "key": "group2",
+    "old": {
+      "abc": 12345,
+      "deep": {
+        "id": 45
+      }
+    },
+    "children": [
+      {
+        "abc": 12345
+      },
+      [
+        {
+          "id": 45
+        }
+      ]
+    ],
+    "type": "remove"
+  },
+  {
+    "key": "group3",
+    "newValue": {
+      "deep": {
+        "id": {
+          "number": 45
+        }
+      },
+      "fee": 100500
+    },
+    "children": [
+      [
+        [
+          {
+            "number": 45
+          }
+        ]
+      ],
+      {
+        "fee": 100500
+      }
+    ],
+    "type": "add"
+  }
+]
