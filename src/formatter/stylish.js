@@ -16,14 +16,12 @@ const dictionary = {
 };
 
 const stylish = (diff) => {
-  // console.log(JSON.stringify(diff, null, '   '));
-
   const iter = (node, counter) => {
     if (_.isArray(node)) {
       return `{\n${node.map((value) => dictionary[value.type](value, counter, iter)).join('\n')}\n${TAB.repeat(spacesCount * counter - 4)}}`;
     }
     const entries = Object.entries(node);
-    return `{\n${entries.map(([key, value]) => `${TAB.repeat(spacesCount * counter - 2)}  ${key}: ${_.isObject(value) ? iter(value, counter + 1) : value}`).join('\n')}\n${TAB.repeat(spacesCount * counter - 4)}}`;
+    return `{\n${entries.map(([key, value]) => `${showReplacer(counter)}  ${key}: ${showValue(value, iter, counter + 1)}`).join('\n')}\n${TAB.repeat(spacesCount * counter - 4)}}`;
   };
   return iter(diff, 1);
 };
