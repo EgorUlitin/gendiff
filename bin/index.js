@@ -10,7 +10,6 @@ program
   .arguments('<filepath1> <filepath2>')
   .action((filepath1, filepath2) => {
     const options = program.opts();
-    // gendiff(filepath1, filepath2, options.format);
     console.log(gendiff(filepath1, filepath2, options.format));
   })
   .parse(process.argv);
