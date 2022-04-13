@@ -6,6 +6,7 @@ export default (filepath1, filepath2, format) => {
   const file1 = getFile(filepath1);
   const file2 = getFile(filepath2);
   const diff = genDiff(file1, file2);
+  console.log(format);
   const formatForView = formatter(format);
   return formatForView(diff);
 };
