@@ -7,7 +7,7 @@ export default (filepath, file) => {
   let parse;
   if (format === '.json') {
     parse = JSON.parse(file);
-  } else if (format === '.yml') {
+  } else if (format === '.yml' || format === '.yaml') {
     parse = yaml.load(file);
   }
   return parse;
