@@ -56,9 +56,10 @@ const dictionary = [
 
 const genDiff = (entriesValue1, entriesValue2) => {
   const diff = (file1, file2) => {
-    const keys = _.union(Object.keys(file1), Object.keys(file2)).sort();
+    const keys = _.union(Object.keys(file1), Object.keys(file2));
+    const sortedKeys = keys.sort();
 
-    return keys.map((key) => {
+    return sortedKeys.map((key) => {
       const value1 = file1[key];
       const value2 = file2[key];
 

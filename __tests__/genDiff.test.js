@@ -1,5 +1,5 @@
 import {
-  expect, test, describe, beforeAll,
+  expect, test, describe,
 } from '@jest/globals';
 import * as fs from 'fs';
 import { fileURLToPath } from 'url';
@@ -12,15 +12,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const getPath = (filename) => join(__dirname, '..', '__fixtures__', filename);
 
-let plainResult;
-let treeResult;
-let textResult;
-
-beforeAll(() => {
-  plainResult = fs.readFileSync(getPath('result'), 'utf-8');
-  treeResult = fs.readFileSync(getPath('resultTree'), 'utf-8');
-  textResult = fs.readFileSync(getPath('resultText'), 'utf-8');
-});
+const plainResult = fs.readFileSync(getPath('result'), 'utf-8');
+const treeResult = fs.readFileSync(getPath('resultTree'), 'utf-8');
+const textResult = fs.readFileSync(getPath('resultText'), 'utf-8');
 
 const expectPlain = genDiff(
   './__fixtures__/plain/file1.json',

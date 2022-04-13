@@ -26,16 +26,14 @@ const plain = (diff) => {
       return node
         .filter((item) => item.type !== 'unchange')
         .map((item) => {
-          const parents = [...parent];
-          if (item.type !== 'node') parents.push(item.key);
+          const parents = item.type !== 'node' ? [...parent, item.key] : [...parent];
 
           return dictionary[item.type](item, iter, parents);
         })
         .join('\n');
     }
     const [key, children] = Object.keys(node);
-    const parents = [...parent];
-    parents.push(node[key]);
+    const parents = [...parent, node[key]];
 
     return iter(node[children], parents);
   };
