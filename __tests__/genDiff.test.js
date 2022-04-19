@@ -13,38 +13,23 @@ const getPath = (filename) => join(__dirname, '..', '__fixtures__', filename);
 const stylishResult = fs.readFileSync(getPath('resultStylish'), 'utf-8');
 const plainResult = fs.readFileSync(getPath('resultPlain'), 'utf-8');
 
-const expectStylish = genDiff(
-  './__fixtures__/file1.json',
-  './__fixtures__/file2.yml',
-  'stylish',
-);
-
-const expectPlain = genDiff(
-  './__fixtures__/file1.json',
-  './__fixtures__/file2.yml',
-  'plain',
-);
-
-const expectJson = genDiff(
-  './__fixtures__/file1.json',
-  './__fixtures__/file2.yml',
-  'json',
-);
-
-describe('check stylish structure', () => {
+describe('genDiff', () => {
   test('stylish structure json', () => {
+    const file1 = getPath('file1.json', 'utf-8');
+    const file2 = getPath('file2.yml', 'utf-8');
+    const expectStylish = genDiff(file1, file2, 'stylish');
     expect(expectStylish).toBe(stylishResult);
   });
-});
-
-describe('check plain structure', () => {
   test('plain structure json', () => {
+    const file1 = getPath('file1.json', 'utf-8');
+    const file2 = getPath('file2.yml', 'utf-8');
+    const expectPlain = genDiff(file1, file2, 'plain');
     expect(expectPlain).toBe(plainResult);
   });
-});
-
-describe('check json structure', () => {
   test('json structure json', () => {
+    const file1 = getPath('file1.json', 'utf-8');
+    const file2 = getPath('file2.yml', 'utf-8');
+    const expectJson = genDiff(file1, file2, 'json');
     expect(() => expectJson).not.toThrow();
   });
 });
