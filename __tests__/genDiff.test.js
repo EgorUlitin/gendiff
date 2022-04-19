@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import { fileURLToPath } from 'url';
 import { join, dirname } from 'path';
 import genDiff from '../src/index.js';
-import diff from '../src/genDiff.js';
+import diff from '../src/diff.js';
 import getFile from '../src/helpers/getFile.js';
 
 const __filename = fileURLToPath(import.meta.url);
