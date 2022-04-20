@@ -14,19 +14,19 @@ const stylishResult = fs.readFileSync(getPath('resultStylish'), 'utf-8');
 const plainResult = fs.readFileSync(getPath('resultPlain'), 'utf-8');
 
 describe('genDiff', () => {
-  test('stylish structure json', () => {
+  test('stylish', () => {
     const file1 = getPath('file1.json', 'utf-8');
     const file2 = getPath('file2.yml', 'utf-8');
     const expectStylish = genDiff(file1, file2, 'stylish');
     expect(expectStylish).toBe(stylishResult);
   });
-  test('plain structure json', () => {
+  test('plain', () => {
     const file1 = getPath('file1.json', 'utf-8');
     const file2 = getPath('file2.yml', 'utf-8');
     const expectPlain = genDiff(file1, file2, 'plain');
     expect(expectPlain).toBe(plainResult);
   });
-  test('json structure json', () => {
+  test('json', () => {
     const file1 = getPath('file1.json', 'utf-8');
     const file2 = getPath('file2.yml', 'utf-8');
     const expectJson = genDiff(file1, file2, 'json');

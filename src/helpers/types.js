@@ -4,4 +4,5 @@ export default {
   ADD: 'add',
   CHANGE: 'change',
   UNCHANGE: 'unchange',
+  ROOT: 'root',
 };

@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import types from '../helpers/types.js';
 
-const prepareParents = (parents) => parents.join('.');
+const prepareParents = (parents) => parents.filter((item) => item !== '').join('.');
 
-const showValue = (value) => {
+const stringify = (value) => {
   if (_.isString(value)) {
     return `'${value}'`;
   }
@@ -14,10 +14,10 @@ const showValue = (value) => {
 };
 
 const dictionary = {
-  [types.ADD]: (value, iter, parents) => `Property '${prepareParents(parents)}' was added with value: ${showValue(value.newValue)}`,
+  [types.ADD]: (value, iter, parents) => `Property '${prepareParents(parents)}' was added with value: ${stringify(value.value2)}`,
   [types.NODE]: (value, iter, parents) => iter(value, parents),
   [types.REMOVE]: (value, iter, parents) => `Property '${prepareParents(parents)}' was removed`,
-  [types.CHANGE]: (value, iter, parents) => `Property '${prepareParents(parents)}' was updated. From ${showValue(value.old)} to ${showValue(value.newValue)}`,
+  [types.CHANGE]: (value, iter, parents) => `Property '${prepareParents(parents)}' was updated. From ${stringify(value.value1)} to ${stringify(value.value2)}`,
 };
 
 const plain = (diff) => {
@@ -32,7 +32,7 @@ const plain = (diff) => {
         })
         .join('\n');
     }
-    const [key, children] = Object.keys(node);
+    const [key,, children] = Object.keys(node);
     const parents = [...parent, node[key]];
 
     return iter(node[children], parents);
