@@ -1,16 +1,6 @@
 import _ from 'lodash';
 import types from './helpers/types.js';
 
-const getChildren = (data) => {
-  const entries = Object.entries(data);
-  return entries.map(([key, value]) => {
-    if (_.isObject(value)) {
-      return getChildren(value);
-    }
-    return { [key]: value };
-  });
-};
-
 const diff = (entriesValue1, entriesValue2) => {
   const iter = (data1, data2) => {
     const keys = _.union(Object.keys(data1), Object.keys(data2));
