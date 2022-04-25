@@ -30,6 +30,6 @@ describe('genDiff', () => {
     const file1 = getPath('file1.json', 'utf-8');
     const file2 = getPath('file2.yml', 'utf-8');
     const expectJson = genDiff(file1, file2, 'json');
-    expect(() => expectJson).not.toThrow();
+    expect(() => JSON.parse(expectJson)).not.toThrow();
   });
 });
