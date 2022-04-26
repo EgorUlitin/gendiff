@@ -23,11 +23,10 @@ const dictionary = {
     `${getReplacer(counter)}+ ${node.key}: ${stringify(node.value2, iter, counter + 1)}`,
   ],
   [types.UNCHANGE]: (node, counter) => `${getReplacer(counter)}  ${node.key}: ${node.value1}`,
-  [types.ROOT]: (node, counter, iter) => `\n${node.children.map((child) => iter(child, counter).join('\n'))}`,
 };
 
 const stylish = (diff) => {
-  const iter = (node, counter) => `{\n${node.children.flatMap((value) => dictionary[value.type](value, counter, iter)).join('\n')}\n${TAB.repeat(spacesCount * counter - 4)}}`;
-  return iter(diff, 1);
+  const iter = (node, counter) => `{\n${node.flatMap((value) => dictionary[value.type](value, counter, iter)).join('\n')}\n${TAB.repeat(spacesCount * counter - 4)}}`;
+  return iter(diff.children, 1);
 };
 export default stylish;
