@@ -1,7 +1,7 @@
 {
-  "name": "@hexlet/code",
+  "name": "gendiff",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/EgorUlitin/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/EgorUlitin/frontend-project-lvl2/actions)",
+  "description": "gendiff commandline tool. Linux's clone tool",
   "main": "index.js",
   "bin": {
     "gendiff": "bin/index.js"
@@ -12,14 +12,14 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EgorUlitin/frontend-project-lvl2.git"
+    "url": "git+https://github.com/EgorUlitin/gendiff.git"
   },
   "author": "egorulitin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/EgorUlitin/frontend-project-lvl2/issues"
+    "url": "https://github.com/EgorUlitin/gendiff/issues"
   },
-  "homepage": "https://github.com/EgorUlitin/frontend-project-lvl2#readme",
+  "homepage": "https://github.com/EgorUlitin/gendiff#readme",
   "dependencies": {
     "commander": "^9.1.0",
     "js-yaml": "^4.1.0",
